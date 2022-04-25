@@ -15,7 +15,7 @@ interface DepositValueRepository : JpaRepository<DepositValueModel, Long> {
 
     @Query(
         nativeQuery = true, value =
-        "SELECT max(d.balance) as max_balance ,concat(year(d.date), '-',month(d.date ),'-',day_of_month(d.date ) , 'T', hour(d.date),':',minute (d.date),':00') as transaction_key FROM DEPOSIT d WHERE d.date > :startDate and d.date < :endDate group by transaction_key"
+        "SELECT max(d.balance) as max_balance ,concat(year(d.date), '-',month(d.date ),'-',day_of_month(d.date ) , 'T', hour(d.date),':00:00') as transaction_key FROM DEPOSIT d WHERE d.date > :startDate and d.date < :endDate group by transaction_key"
     )
     fun findAllByDateTimeBetweenStartDateAndEndDate(
         @Param("startDate") startDate: Date,

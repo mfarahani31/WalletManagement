@@ -13,9 +13,7 @@ class DateHandler {
     fun addHourToTimestamp(date: Date, hours: Int): Date {
         val calendar = Calendar.getInstance()
         calendar.time = date
-        calendar.set(Calendar.MINUTE, 0);
         calendar.add(Calendar.HOUR_OF_DAY, hours)
-        calendar.timeZone =  TimeZone.getTimeZone("UTC");
         return calendar.time
     }
 }

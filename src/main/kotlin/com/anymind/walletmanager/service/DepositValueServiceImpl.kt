@@ -43,7 +43,7 @@ class DepositValueServiceImpl : DepositValueService {
                 balanceRequestModel.endDatetime
             )
         val format: DateFormat = SimpleDateFormat("yyyy-M-dd'T'HH:mm:ss", Locale.ENGLISH)
-        format.timeZone = TimeZone.getTimeZone("UTC");
+        format.timeZone = TimeZone.getTimeZone("UTC")
 
         val endHourBalances = hashMapOf<Date, BigDecimal?>()
         if (transactions.size != 1) {
@@ -55,7 +55,7 @@ class DepositValueServiceImpl : DepositValueService {
                 val nextTransactionDate = format.parse(transactions[currentIndex + 1].getTransaction_key())
                 endHourBalances[transactionDate] = transaction.getMax_balance()
                 val diffInHour = this.dateHandler.diffInHour(nextTransactionDate, transactionDate)
-                if (diffInHour >= 1) {
+                if (diffInHour > 1) {
                     var hours = 1
                     while (hours <= diffInHour) {
                         val tempKey = this.dateHandler.addHourToTimestamp(transactionDate, hours)
