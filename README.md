@@ -1,6 +1,7 @@
 # WalletManagement
 A project to deposit BTC and get report of balances for each hour
 
+Implemented with : Kotlin - Springboot - H2 database
 Including two APIs:
 
 1. For deposit --> /api/v1/deposits/save
